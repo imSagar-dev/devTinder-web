@@ -1,5 +1,5 @@
 export const urls ={
-    login:{
-        login:'/login'
-    }
+   login:'/login',
+   logout:'/logout',
+   profile:'/user/profile'
 }

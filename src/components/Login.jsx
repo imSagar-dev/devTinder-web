@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
-
-import {httpPost} from "../service/http.service";
 import{urls} from "../config/apiUrls";
 import {addUser}  from "../utils/store/slices/userSlice";
 import {useNavigate} from 'react-router-dom';
+import {httpPost} from "../service/http.service"
+// import { axios } from 'axios';
+// import { constants } from './../config/constants';
 
 
 
@@ -16,12 +17,13 @@ const Login = () => {
 
     const  Login = async ()=>{
         try {
-           const user = await httpPost(urls.login.login,{username, password});
-         
+           const user = await httpPost(urls.login,{username, password});
+        //    const user = await axios.post(constants.url+urls.login,{username, password} ,{withCredentials:true});
+           console.log('usersss',user)
             dispatch(addUser(user.data));
             return navigate(`/profile`);
         } catch (error) {
-                console.error(error);
+            console.log(error);
         }   
     }
 
@@ -53,6 +55,16 @@ const Login = () => {
   </div>
 </div>
     </div>
+
+    <dialog id="my_modal_2" className="modal">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Hello!</h3>
+    <p className="py-4">Press ESC key or click outside to close</p>
+  </div>
+  <form method="dialog" className="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
     
 
     </>

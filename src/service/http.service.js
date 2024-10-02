@@ -9,34 +9,35 @@ export  async function httpPost(url,data){
        
         return response.data;
     } catch (error) {
-            return error.message;
+        // console.log(JSON.stringify(error));
+        return error.response.data;
     }
 }
 
 export  async function httpGet(url){
     try {
-        const response = await axios.get(url,{withCredentials:true});
-        return response;
+        const response = await axios.get(constants.url+url,{withCredentials:true});
+        return response.data;
     } catch (error) {
-            return error.message;
+        return error.response.data;
     }
 }
 
 
 export  async function httpPatch(url,data){
     try {
-        const response = await axios.patch(url,data ,{withCredentials:true});
+        const response = await axios.patch(constants.url+url,data ,{withCredentials:true});
         return response;
     } catch (error) {
-            return error.message;
+        return error.response.data;
     }
 }
 
 export  async function httpDelete(url){
     try {
-        const response = await axios.delete(url,{withCredentials:true});
+        const response = await axios.delete(constants.url+url,{withCredentials:true});
         return response;
     } catch (error) {
-            return error.message;
+        return error.response.data;
     }
 }

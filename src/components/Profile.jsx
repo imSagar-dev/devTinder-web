@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +16,10 @@ const Profile = () => {
         }
     };
 
-    getUser();
+    useEffect(()=>{
+        getUser();
+    },[])
+    
   return (
     <div>Profile</div>
   )

@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import { removeUser } from "../utils/store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { httpPost } from "../service/http.service";
+import { urls } from "../config/apiUrls";
 
 
 
@@ -10,6 +12,8 @@ const NavBar = () => {
   const navigate = useNavigate();
   const logout = async()=>{
     try {
+      const response = await httpPost(urls.logout);
+      console.log(response);
       dispatch(removeUser());
       return navigate('/login')
     } catch (error) {
